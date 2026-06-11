@@ -31,9 +31,16 @@ print("=" * 60)
 # EXPECTED LOSS
 # ==========================================================
 
+LGD = 0.45
+
 df["Expected_Loss_Model"] = (
-    df["Loan_Amount"]
-    * (df["Risk_Score"] / 100)
+
+    df["Predicted_Default_Probability"]
+
+    * LGD
+
+    * df["Loan_Amount"]
+
 )
 
 # ==========================================================
@@ -44,7 +51,9 @@ df["Expected_Interest_Income"] = (
 
     df["Loan_Amount"]
 
-    * (df["Interest_Rate"] / 100)
+    * (df["Interest_Rate"]/100)
+
+    * 0.5
 
 )
 
