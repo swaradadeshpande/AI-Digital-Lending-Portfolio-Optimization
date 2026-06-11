@@ -93,10 +93,23 @@ joblib.dump(
 # FEATURES & TARGET
 # ==========================================================
 
+leakage_cols = [
+
+    "Default",
+
+    "Default_Probability",
+
+    "Expected_Loss",
+
+    "Profit",
+
+    "Loan_Status"
+
+]
+
 X = df.drop(
-    columns=[
-        "Default"
-    ]
+    columns=leakage_cols,
+    errors="ignore"
 )
 
 y = df["Default"]
